@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<form method="post" name="c">
+<div class="toolbar" class="container-fluid">
+    <div class="row-fluid">
+        <div class="span2 pull-right" >
+            <input class="btn btn-info" type="submit">
+        </div>
+        <div class="error" style="color: red;">{{ error }}</div>
+    </div>
+</div>
+
+<div class="outerc" class="container-fluid">
+    <div class="row-fluid">
+        <textarea name="code" id="code"></textarea>
+    </div>
+</div>
+
+
+{% endblock %}

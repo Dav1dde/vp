@@ -46,7 +46,7 @@ def put_file(fobj, uptype):
         db = Paste(name=name)
     db_session.add(db)
     
-    url = url_for('.show_{}'.format(uptype.lower()), name=name, _external=True)
+    url = url_for('rest.show_{}'.format(uptype.lower()), name=name, _external=True)
     if fobj.has_filename and uptype.lower() == 'paste':
         url = '{}?{}'.format(url, fobj.filename.lstrip('.'))
     

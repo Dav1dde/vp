@@ -6,6 +6,7 @@ import io
 from pygments.lexers import (get_lexer_by_name,
                              get_lexer_for_filename,
                              #get_lexer_for_mimetype,
+                             guess_lexer,
                              TextLexer)
 from pygments.util import ClassNotFound
 
@@ -37,6 +38,14 @@ def get_best_lexer(filename, syntax=None):
         except ClassNotFound:
             pass
     return TextLexer(encoding=None)
+
+def get_lexer_name_from_code(code):
+    try:
+        return guess_lexer(code, encoding=None).aliases[0]
+    except ClassNotFound:
+        pass
+    
+    return ''
 
 
 class PseudoFile(object):

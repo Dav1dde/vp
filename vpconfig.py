@@ -5,8 +5,8 @@ ONLINE = not os.getenv('VP', 'offline') == 'offline'
 THIS_PATH = os.path.abspath(os.path.split(__file__)[0])
 
 if ONLINE:
-    IMAGE = os.path.join(THIS_PATH, 'upload', 'image')
-    PASTE = os.path.join(THIS_PATH, 'upload', 'paste')
+    IMAGE = os.path.join(THIS_PATH, 'upload', 'img')
+    PASTE = os.path.join(THIS_PATH, 'upload', '')
 else:
     IMAGE = '/tmp/upload/image'
     PASTE = '/tmp/upload/paste'

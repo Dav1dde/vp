@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>VP - Volt Paste</title>
+
+        <!-- styles -->
+        <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+        <link rel=stylesheet type=text/css href="{{ url_for('static', filename='bootstrap.min.css') }}">
+    </head>
+    <body>
+
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand">Volt Paste </a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="active"><a id="paste">Paste</a></li>
+              <li><a id="about">About</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="outer" class="container-fluid">
+        {% block content %}{% endblock %}
+    </div>
+
+
+    <!-- Move JS to the bottom to speed up page loading speeds -->
+    <!-- dependencies -->
+    <script type=text/javascript src="{{ url_for('static', filename='jquery-1.9.1.min.js') }}"></script>
+    <script type=text/javascript src="{{ url_for('static', filename='bootstrap.min.js') }}"></script>
+    <script type=text/javascript src="{{ url_for('static', filename='codemirror.js') }}"></script>
+
+    <!-- application code hookup -->
+    <script type=text/javascript src="{{ url_for('static', filename='code.js') }}"></script>
+
+    </body>
+</html>
