@@ -14,16 +14,17 @@ from vp import app
 
 mod = Blueprint('rest', __name__)
 
-@mod.route('/', methods=['PUT'])
-@mod.route('/put', methods=['PUT'])
+@mod.route('/', methods=['PUT', 'POST'])
+@mod.route('/put', methods=['PUT', 'POST'])
 def put():
     fobj = request.files.get('file')
     data = request.form.get('data')
+    more_data = request.data;
 
-    if not fobj and not data:
+    if not fobj and not data and not more_data:
         return abort(400)
 
-    fobj = PseudoFile(fobj, data)  
+    fobj = PseudoFile(fobj, data if data else more_data)  
     if not imghdr.what(fobj) is None:
         return put_file(fobj, 'IMAGE')
     return put_file(fobj, 'PASTE')
