@@ -11,7 +11,10 @@ from vp.db import db_session, init_db, engine, Base
 
 if not os.path.exists(app.config['DB_PATH']):
     init_db()
-    
+
+@app.route('/', methods=['GET'])
+def index():
+    return 'Volt Paste!'
 
 @app.teardown_request
 def remove_db_session(exception):
