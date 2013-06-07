@@ -1,4 +1,4 @@
-from flask import Blueprint, request, abort, url_for, send_from_directory
+from flask import Blueprint, request, abort, url_for, send_from_directory, Response
 import codecs
 import os.path
 import imghdr
@@ -45,19 +45,11 @@ def put_file(fobj, uptype):
         db = Paste(name=name)
     db_session.add(db)
     
-    return url_for('.show_{}'.format(uptype.lower()), name=name, _external=True), 201
-
-def put_raw(data):
-    name = make_random_name(data[:30])
-    path = os.path.join(app.config['PASTE'], name)
-
-    with codecs.open(path, 'w', 'utf-8') as f:
-        f.write(data)
+    url = url_for('.show_{}'.format(uptype.lower()), name=name, _external=True)
+    if fobj.has_filename and uptype.lower() == 'paste':
+        url = '{}?{}'.format(url, fobj.filename.lstrip('.'))
     
-    paste = Paste(name=name)
-    db_session.add(paste)
-    
-    return url_for('.show_paste', name=name, _external=True), 201
+    return url, 201
 
 
 @mod.route('/<name>', methods=['GET'])
@@ -69,8 +61,8 @@ def show_paste(name):
     keys = request.args.keys()
     if keys:
         syntax = keys[0]
-        if syntax in ('v', '.v', 'volt'):
-            syntax = 'd'
+        syntax = syntax.replace('.volt', '.d').replace('.v', '.d')
+        syntax = 'd' if syntax == 'v' else syntax
     
     path = os.path.join(app.config['PASTE'], name)
     if not os.path.exists(path):
@@ -84,7 +76,7 @@ def show_paste(name):
         
             return highlight(f.read(), lexer, formatter)
     
-        return f.read()
+        return Response(f.read(), mimetype='text/plain')
 
 
 @mod.route('/img/<name>', methods=['GET'])
