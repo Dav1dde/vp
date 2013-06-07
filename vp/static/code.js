@@ -5,7 +5,7 @@
 
 $(function() {
     window.cm = CodeMirror.fromTextArea(document.getElementById('code'), {
-        mode: 'text',
+        mode: 'text/x-d',
         tabSize: 4,
         smartIndent: false,
         lineNumbers: true,
