@@ -1,0 +1,7 @@
+*.pyc
+*.db
+*.sqlite
+*.png
+*.txt
+.project
+.pydevproject
