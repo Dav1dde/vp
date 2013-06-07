@@ -14,7 +14,8 @@ from vp import app
 
 mod = Blueprint('rest', __name__)
 
-@mod.route('/rest/put/', methods=['PUT'])
+@mod.route('/', methods=['PUT'])
+@mod.route('/put', methods=['PUT'])
 def put():
     fobj = request.files.get('file')
     data = request.form.get('data')
