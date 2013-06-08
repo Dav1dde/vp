@@ -19,16 +19,16 @@ body {
 
 .CodeMirror {
     min-height: 350px;
-    height: calc(100% - 150px);
-    height: -moz-calc(100% - 150px);
-    height: -o-calc(100% - 150px);
-    height: -webkit-calc(100% - 150px);
+    height: -moz-calc(100% - 120px);
+    height: -o-calc(100% - 120px);
+    height: -webkit-calc(100% - 120px);
+    height: calc(100% - 120px);
 }
 
 .CodeMirror-scroll {
     min-height: 350px;
-    height: calc(100% - 150px);
-    height: -moz-calc(100% - 150px);
-    height: -o-calc(100% - 150px);
-    height: -webkit-calc(100% - 150px);
+    height: -moz-calc(100% - 120px);
+    height: -o-calc(100% - 120px);
+    height: -webkit-calc(100% - 120px);
+    height: calc(100% - 120px);
 }

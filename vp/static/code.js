@@ -15,6 +15,7 @@ $(function() {
 
     function resize() {
         $('.CodeMirror').css('height', $(window).height()-120 + 'px');
+        $('.CodeMirror-scroll').css('height', $(window).height()-120 + 'px');
     }
 
     $(window).resize(resize);
