@@ -1,8 +1,10 @@
 import os
 
-ONLINE = not os.getenv('VP', 'offline') == 'offline'
-
 THIS_PATH = os.path.abspath(os.path.split(__file__)[0])
+
+ONLINE = not os.getenv('VP', 'offline') == 'offline'
+if os.path.exists(os.path.join(THIS_PATH, 'vponline')):
+    ONLINE = True
 
 if ONLINE:
     IMAGE = os.path.join(THIS_PATH, 'upload', 'img')
