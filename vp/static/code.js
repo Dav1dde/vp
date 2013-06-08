@@ -7,8 +7,11 @@ $(function() {
     window.cm = CodeMirror.fromTextArea(document.getElementById('code'), {
         mode: 'text/x-d',
         tabSize: 4,
+        indentUnit: 4,
+        indentWithTabs: true,
         smartIndent: true,
         lineNumbers: true,
+        matchBrackets: true,
         lineWrapping: false,
         firstLineNumber: 1
     });
